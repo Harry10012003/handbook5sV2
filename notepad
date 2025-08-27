@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Không Gian Làm Việc Số 5S: Hướng Dẫn Chuyên Sâu trong Microsoft 365</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'Tes-Sans-Regular';
+            src: url('Source/Tes-Sans-Regular.woff2') format('woff2'),
+                 url('Source/Tes-Sans-Regular.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Verdana', 'Roboto', sans-serif;
+            background-color: #f5f5f0;
+            background-image: linear-gradient(rgba(245, 245, 240, 0.97), rgba(245, 245, 240, 0.97)), url('Source/Green-Committe-Logo.png');
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            background-size: 50%;
+            color: #1e293b; 
+            zoom: 80%;
+        }
+        .font-custom {
+            font-family: 'Tes-Sans-Regular', 'Roboto Condensed', sans-serif;
+        }
+        .nav-link {
+            transition: color 0.3s ease;
+        }
+        .nav-link.active, .nav-link:hover {
+            color: #0096be;
+        }
+        .tab-link {
+            transition: all 0.3s ease;
+        }
+        .tab-link.active {
+            background-color: #ffffff;
+            color: #0096be;
+            box-shadow: 0 4px 10px -2px rgb(0 0 0 / 0.1);
+        }
+        .content-section, .tab-content {
+            display: none;
+        }
+        .content-section.active, .tab-content.active {
+            display: block;
+        }
+        .prose-custom p, .prose-custom ul, .prose-custom ol {
+            margin-bottom: 1rem;
+            line-height: 1.75;
+        }
+        .prose-custom ul, .prose-custom ol {
+            padding-left: 1.5rem;
+        }
+        .prose-custom ul {
+            list-style-type: disc;
+        }
+        .prose-custom h3 {
+            margin-top: 0;
+            margin-bottom: 0;
+            color: #1e293b;
+        }
+        .prose-custom h4 {
+           margin: 0;
+        }
+        .prose-custom strong {
+            color: #020617;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.75rem 1rem;
+            text-align: left;
+        }
+        th {
+            background-color: #f9fafb;
+            font-weight: 600;
+        }
+        #feedback-popup {
+            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(4px);
+        }
+        .d-button.active {
+            background-color: #64ae24;
+            color: white;
+            border-color: #64ae24;
+        }
+        .interactive-content {
+            transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out, margin-top 0.5s ease-in-out;
+            overflow: hidden;
+            max-height: 2000px; /* Tăng chiều cao tối đa để chứa hình ảnh */
+        }
+        .interactive-content.hidden {
+            max-height: 0;
+            opacity: 0;
+            margin-top: 0 !important;
+        }
+        .collapsible-button h3, .collapsible-button h4 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e293b; /* Standardized color */
+        }
+        input.checklist-item:checked + span {
+            text-decoration: line-through;
+            color: #6b7280;
+        }
+        /* New styles for floating nav */
+        #intro-nav a {
+            transition: all 0.3s ease;
+        }
+        #intro-nav a.active {
+            background-color: #64ae24;
+            color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="min-h-screen">
+        <header class="bg-transparent sticky top-0 z-50 py-4">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 bg-[#f5f5f0]/80 backdrop-blur-lg rounded-2xl border border-gray-300/80 shadow-sm">
+                <div class="flex items-center justify-between h-20">
+                    <div class="flex items-center gap-3 flex-shrink-0">
+                        <img src="Source/Tessellation-Logo.png" alt="Tessellation Logo" class="h-10 w-auto">
+                        <span class="text-xl font-bold text-slate-800 whitespace-nowrap font-custom tracking-wide">5S ONLINE HANDBOOK</span>
+                    </div>
+                    <nav class="hidden lg:flex items-center space-x-8">
+                        <a href="#gioi-thieu" class="nav-link text-slate-700 font-semibold text-xs tracking-wider font-custom" data-target="gioi-thieu">GIỚI THIỆU</a>
+                        <a href="#s1" class="nav-link text-slate-700 font-semibold text-xs tracking-wider font-custom" data-target="s1">S1</a>
+                        <a href="#s2" class="nav-link text-slate-700 font-semibold text-xs tracking-wider font-custom" data-target="s2">S2</a>
+                        <a href="#s3" class="nav-link text-slate-700 font-semibold text-xs tracking-wider font-custom" data-target="s3">S3</a>
+                        <a href="#s4" class="nav-link text-slate-700 font-semibold text-xs tracking-wider font-custom" data-target="s4">S4</a>
+                        <a href="#s5" class="nav-link text-slate-700 font-semibold text-xs tracking-wider font-custom" data-target="s5">S5</a>
+                        <a href="#office-2-0" class="nav-link text-slate-700 font-semibold text-xs tracking-wider font-custom" data-target="office-2-0">OFFICE 2.0 x 5S</a>
+                    </nav>
+                    <div class="lg:hidden">
+                        <button id="mobile-menu-button" class="text-slate-600 hover:text-orange-500">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div id="mobile-menu" class="lg:hidden hidden bg-white border-t border-slate-200 mt-2 rounded-b-xl shadow-lg">
+                <a href="#gioi-thieu" class="block py-3 px-4 text-sm text-slate-600 hover:bg-orange-50 mobile-nav-link" data-target="gioi-thieu">Giới thiệu</a>
+                <a href="#s1" class="block py-3 px-4 text-sm text-slate-600 hover:bg-orange-50 mobile-nav-link" data-target="s1">S1: Sàng lọc</a>
+                <a href="#s2" class="block py-3 px-4 text-sm text-slate-600 hover:bg-orange-50 mobile-nav-link" data-target="s2">S2: Sắp xếp</a>
+                <a href="#s3" class="block py-3 px-4 text-sm text-slate-600 hover:bg-orange-50 mobile-nav-link" data-target="s3">S3: Sạch sẽ</a>
+                <a href="#s4" class="block py-3 px-4 text-sm text-slate-600 hover:bg-orange-50 mobile-nav-link" data-target="s4">S4: Săn sóc</a>
+                <a href="#s5" class="block py-3 px-4 text-sm text-slate-600 hover:bg-orange-50 mobile-nav-link" data-target="s5">S5: Sẵn sàng</a>
+                <a href="#office-2-0" class="block py-3 px-4 text-sm text-slate-600 hover:bg-orange-50 mobile-nav-link" data-target="office-2-0">Office 2.0 x 5S</a>
+            </div>
+        </header>
+
+        <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="bg-white p-8 sm:p-12 rounded-2xl shadow-lg border border-slate-200 prose-custom max-w-4xl mx-auto">
+            
+                <section id="gioi-thieu" class="content-section">
+                    <div class="text-center mb-12">
+                        <h2 class="text-3xl sm:text-4xl font-bold font-custom" style="color: #64ae24;">Let’s Commit To Green Actions 🌱</h2>
+                    </div>
+                    
+                    <p class="text-center text-base">
+                        <strong style="color: #64ae24;">Local Green Committee</strong> - một tổ chức thuộc <strong style="color: #0096be;">Tessellation Việt Nam</strong> với sứ mệnh lan tỏa các hoạt động bảo vệ môi trường đang triển khai dự án “5S Online” với mục tiêu “Green lifestyle - Lối sống xanh”. Dự án hướng đến việc giảm dấu chân carbon và rác thải điện tử, đồng thời tối ưu hóa hiệu suất công việc dựa trên nền tảng LEAN.
+                    </p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 my-12">
+                        <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 flex flex-col items-center justify-center text-center">
+                            <img id="green-logo-thumb" src="Source/Green-Committe-Logo.png" alt="Green Committe Logo" class="h-24 w-auto mb-4 cursor-pointer">
+                            <h4 class="font-bold text-slate-800">Green Committee</h4>
+                        </div>
+                        <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 flex flex-col items-center justify-center text-center">
+                            <img id="poster-thumb" src="Source/5S-Online-Poster.png" alt="5S Online Poster" class="h-24 w-auto mb-4 cursor-pointer">
+                            <h4 class="font-bold text-slate-800">Dự án 5S Online</h4>
+                        </div>
+                    </div>
+                    
+                    <!-- Floating Navigation Pane -->
+                    <div id="intro-nav" class="sticky top-28 z-40 mb-12 bg-slate-100/80 backdrop-blur-sm p-2 rounded-full flex items-center justify-center gap-2 max-w-md mx-auto border border-slate-200">
+                        <a href="#co2-section" class="intro-nav-link flex-1 text-center px-4 py-2 rounded-full font-semibold text-sm text-slate-600">👣 Tính CO₂</a>
+                        <a href="#checklist-section" class="intro-nav-link flex-1 text-center px-4 py-2 rounded-full font-semibold text-sm text-slate-600">✅ Checklist 5S</a>
+                        <a href="#form-section" class="intro-nav-link flex-1 text-center px-4 py-2 rounded-full font-semibold text-sm text-slate-600">📝 Data Record</a>
+                    </div>
+
+                    <!-- CO2 Calculator Section -->
+                    <div id="co2-section" class="pt-16 -mt-16">
+                        <div class="rounded-xl p-8 my-16 text-center relative" style="background-color: #f0fbf4; border: 1px solid #cce8d4;">
+                            <div id="feedback-popup" class="absolute bottom-full mb-2 w-full max-w-xs left-1/2 -translate-x-1/2 p-4 rounded-lg shadow-lg text-center font-semibold opacity-0 transform translate-y-2 pointer-events-none" style="background-color: rgba(255, 255, 255, 0.8); backdrop-filter: blur(4px); color: #166534;">
+                                <p id="popup-icon" class="text-3xl mb-2"></p>
+                                <p id="popup-message" class="text-sm"></p>
+                            </div>
+                            <h4 class="font-bold text-lg" style="color: #14532d;">Tính toán Dấu chân Carbon của bạn 👣</h4>
+                            <p class="text-sm mt-2 mb-6" style="color: #166534;">Trung bình, mỗi email phát thải khoảng 0,3 g CO₂e. Bằng cách xóa email không cần thiết, bạn đang góp phần giảm lượng khí thải CO2. Hãy xem bạn đã tạo ra tác động tích cực như thế nào!</p>
+                            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                                <input type="number" id="email-input" placeholder="Nhập số email đã xóa" class="w-full sm:w-auto text-center bg-white border border-slate-300 rounded-full px-4 py-3 text-sm focus:outline-none" style="border-color: #64ae24; focus:ring: #64ae24;">
+                                <p class="text-slate-700 font-semibold">Bạn đã giảm được <span id="co2-result" class="font-bold text-xl" style="color: #64ae24;">0</span>g CO2 ra môi trường</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Checklist Section -->
+                    <div id="checklist-section" class="pt-16 -mt-16">
+                        <div class="my-16 border-t border-slate-200 pt-12">
+                            <div class="text-center">
+                                <h3 class="text-2xl font-bold text-slate-800 font-custom">Checklist Đánh giá 5S Cá nhân ✅</h3>
+                                <p class="mt-2 text-slate-600">Tự đánh giá hàng tháng để theo dõi tiến độ của bạn. Nhấn vào các mục để đánh dấu hoàn thành.</p>
+                            </div>
+                            <div class="mt-8 max-w-2xl mx-auto">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-sm font-semibold text-slate-700">Tiến độ của bạn:</span>
+                                    <span id="progress-text" class="text-sm font-bold" style="color: #64ae24;">0%</span>
+                                </div>
+                                <div class="w-full bg-slate-200 rounded-full h-3">
+                                    <div id="progress-bar" class="h-3 rounded-full" style="width: 0%; transition: width 0.5s ease-in-out; background-color: #64ae24;"></div>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 mt-8 max-w-4xl mx-auto">
+                                <div>
+                                    <h4 class="font-bold text-lg text-slate-800 border-b-2 pb-2 mb-4" style="border-color: #64ae24;">Outlook</h4>
+                                    <ul class="space-y-3">
+                                        <li><label class="flex items-center cursor-pointer group"><input type="checkbox" class="checklist-item h-5 w-5 flex-shrink-0 rounded border-gray-300 text-emerald-600 focus:ring-emerald-500"><span class="ml-3 text-slate-700 group-hover:text-slate-900">Hộp thư đến có dưới 20 email chưa xử lý.</span></label></li>
+                                        <li><label class="flex items-center cursor-pointer group"><input type="checkbox" class="checklist-item h-5 w-5 flex-shrink-0 rounded border-gray-300 text-emerald-600 focus:ring-emerald-500"><span class="ml-3 text-slate-700 group-hover:text-slate-900">Các email cũ hơn 1 năm đã được lưu trữ (archived).</span></label></li>
+                                        <li><label class="flex items-center cursor-pointer group"><input type="checkbox" class="checklist-item h-5 w-5 flex-shrink-0 rounded border-gray-300 text-emerald-600 focus:ring-emerald-500"><span class="ml-3 text-slate-700 group-hover:text-slate-900">Đã hủy đăng ký các bản tin, email quảng cáo không cần thiết.</span></label></li>
+                                        <li><label class="flex items-center cursor-pointer group"><input type="checkbox" class="checklist-item h-5 w-5 flex-shrink-0 rounded border-gray-300 text-emerald-600 focus:ring-emerald-500"><span class="ml-3 text-slate-700 group-hover:text-slate-900">Sử dụng Rules để tự động phân loại email đến.</span></label></li>
+                                        <li><label class="flex items-center cursor-pointer group"><input type="checkbox" class="checklist-item h-5 w-5 flex-shrink-0 rounded border-gray-300 text-emerald-600 focus:ring-emerald-500"><span class="ml-3 text-slate-700 group-hover:text-slate-900">Các tệp đính kèm lớn đã được lưu vào OneDrive.</span></label></li>
+                                        <li><label class="flex items-center cursor-pointer group"><input type="checkbox" class="checklist-item h-5 w-5 flex-shrink-0 rounded border-gray-300 text-emerald-600 focus:ring-emerald-500"><span class="ml-3 text-slate-700 group-hover:text-slate-900">Sử dụng Quick Steps cho các tác vụ thường xuyên.</span></label></li>
+                                        <li><label class="flex items-center cursor-pointer group"><input type="checkbox" class="checklist-item h-5 w-5 flex-shrink-0 rounded border-gray-300 text-emerald-600 focus:ring-emerald-500"><span class="ml-3 text-slate-700 group-hover:text-slate-900">Dành khối thời gian cố định để xử lý email.</span></label></li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg text-slate-800 border-b-2 pb-2 mb-4" style="border-color: #64ae24;">OneDrive</h4>
+                                    <ul class="space-y-3">
+                                        <li><label class="flex items-center cursor-pointer group"><input type="checkbox" class="checklist-item h-5 w-5 flex-shrink-0 rounded border-gray-300 text-emerald-600 focus:ring-emerald-500"><span class="ml-3 text-slate-700 group-hover:text-slate-900">Các tệp trùng lặp đã được xác định và xóa bỏ.</span></label></li>
+                                        <li><label class="flex items-center cursor-pointer group"><input type="checkbox" class="checklist-item h-5 w-5 flex-shrink-0 rounded border-gray-300 text-emerald-600 focus:ring-emerald-500"><span class="ml-3 text-slate-700 group-hover:text-slate-900">Các tệp cũ đã được di chuyển vào thư mục _Archive.</span></label></li>
+                                        <li><label class="flex items-center cursor-pointer group"><input type="checkbox" class="checklist-item h-5 w-5 flex-shrink-0 rounded border-gray-300 text-emerald-600 focus:ring-emerald-500"><span class="ml-3 text-slate-700 group-hover:text-slate-900">Thùng rác (Recycle Bin) được dọn dẹp định kỳ.</span></label></li>
+                                        <li><label class="flex items-center cursor-pointer group"><input type="checkbox" class="checklist-item h-5 w-5 flex-shrink-0 rounded border-gray-300 text-emerald-600 focus:ring-emerald-500"><span class="ml-3 text-slate-700 group-hover:text-slate-900">Cấu trúc thư mục nhất quán và logic.</span></label></li>
+                                        <li><label class="flex items-center cursor-pointer group"><input type="checkbox" class="checklist-item h-5 w-5 flex-shrink-0 rounded border-gray-300 text-emerald-600 focus:ring-emerald-500"><span class="ml-3 text-slate-700 group-hover:text-slate-900">Tệp và thư mục được đặt tên theo quy ước.</span></label></li>
+                                        <li><label class="flex items-center cursor-pointer group"><input type="checkbox" class="checklist-item h-5 w-5 flex-shrink-0 rounded border-gray-300 text-emerald-600 focus:ring-emerald-500"><span class="ml-3 text-slate-700 group-hover:text-slate-900">Sử dụng 'Shortcuts' thay vì tạo bản sao.</span></label></li>
+                                        <li><label class="flex items-center cursor-pointer group"><input type="checkbox" class="checklist-item h-5 w-5 flex-shrink-0 rounded border-gray-300 text-emerald-600 focus:ring-emerald-500"><span class="ml-3 text-slate-700 group-hover:text-slate-900">Tính năng 'Files On-Demand' được bật.</span></label></li>
+                                        <li><label class="flex items-center cursor-pointer group"><input type="checkbox" class="checklist-item h-5 w-5 flex-shrink-0 rounded border-gray-300 text-emerald-600 focus:ring-emerald-500"><span class="ml-3 text-slate-700 group-hover:text-slate-900">Phân biệt rõ lưu trữ trên OneDrive (cá nhân) và SharePoint (nhóm).</span></label></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Microsoft Form Section -->
+                    <div id="form-section" class="pt-16 -mt-16">
+                        <div class="my-16 border-t border-slate-200 pt-12">
+                            <div class="text-center">
+                                <h3 class="text-2xl font-bold text-slate-800 font-custom">Cùng Local Green Committee Vietnam ghi nhận lại những đóng góp của bạn với môi trường 📝</h3>
+                                <p class="mt-2 text-slate-600">Bạn đã giảm thiểu được bao nhiêu gam CO2!</p>
+                            </div>
+                            <div class="mt-8 rounded-lg overflow-hidden shadow-lg border border-slate-200">
+                                <iframe width="100%" height="850px" src="https://forms.office.com/r/ntaEbTMMHt?embed=true" frameborder="0" marginwidth="0" marginheight="0" style="border: none; max-width:100%;" allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen> </iframe>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="s1" class="content-section">
+                    <div class="text-center mb-10">
+                        <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 mb-3 font-condensed">SÀNG LỌC 🗑️</h2>
+                    </div>
+                    
+                    <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 text-center mb-8">
+                        <p class="italic text-slate-600">Giai đoạn Sàng lọc là nền tảng của hệ thống 5S, tập trung vào việc loại bỏ những thứ không cần thiết để giải phóng không gian và giải phóng tâm trí.</p>
+                    </div>
+
+                    <div class="p-1 bg-slate-100 rounded-full inline-flex space-x-1 mb-8">
+                        <a href="#" class="tab-link px-5 py-2 rounded-full text-sm font-semibold text-slate-500" data-app="s1" data-target="outlook">Outlook</a>
+                        <a href="#" class="tab-link px-5 py-2 rounded-full text-sm font-semibold text-slate-500" data-app="s1" data-target="onedrive">OneDrive / SharePoint</a>
+                    </div>
+
+                    <div id="s1-outlook" class="tab-content" data-app="s1">
+                        <div class="space-y-8">
+                            <!-- Block 1: 4D Rule -->
+                            <div class="p-6 rounded-lg border border-slate-200">
+                                <h3 class="text-center font-bold text-2xl font-custom text-emerald-600 mb-2">QUY TẮC 4D</h3>
+                                <p class="text-center text-slate-500 mb-6">Bấm vào mỗi mục để xem chi tiết</p>
+                                <div class="flex flex-col md:flex-row gap-4 mb-4">
+                                    <button data-target="d1" class="d-button flex-1 py-3 px-4 bg-white border-2 border-slate-300 rounded-lg font-semibold text-slate-700 transition hover:bg-slate-50">Delete</button>
+                                    <button data-target="d2" class="d-button flex-1 py-3 px-4 bg-white border-2 border-slate-300 rounded-lg font-semibold text-slate-700 transition hover:bg-slate-50">Do</button>
+                                    <button data-target="d3" class="d-button flex-1 py-3 px-4 bg-white border-2 border-slate-300 rounded-lg font-semibold text-slate-700 transition hover:bg-slate-50">Delegate</button>
+                                    <button data-target="d4" class="d-button flex-1 py-3 px-4 bg-white border-2 border-slate-300 rounded-lg font-semibold text-slate-700 transition hover:bg-slate-50">Defer</button>
+                                </div>
+                                <div class="mt-4 space-y-4">
+                                    <div id="d1" class="interactive-content hidden p-4 bg-slate-50 rounded-lg border border-slate-200"><strong>Delete:</strong>Hãy xóa ngay lập tức các email không quan trọng, spam, thông báo đã cũ, hoặc các email quảng cáo mà bạn không quan tâm.
+                                        <img src="Source/Delete-Rule-Picture.png" alt="Delete Rule Picture" class="mt-4 rounded-lg shadow-md w-full h-auto">
+                                    </div>
+                                    <div id="d2" class="interactive-content hidden p-4 bg-slate-50 rounded-lg border border-slate-200"><strong>Do:</strong> Áp dụng "Quy tắc 2 phút". Nếu việc trả lời hoặc thực hiện hành động yêu cầu trong email chỉ mất dưới hai phút, hãy làm ngay lập tức. Sau khi hoàn thành, hãy xóa hoặc lưu trữ email đó.</div>
+                                    <div id="d3" class="interactive-content hidden p-4 bg-slate-50 rounded-lg border border-slate-200"><strong>Delegate:</strong> Nếu email đó thuộc trách nhiệm của một người khác, hãy chuyển tiếp nó ngay lập tức cho người đó. Sau khi chuyển tiếp, bạn có thể xóa hoặc di chuyển email gốc vào một thư mục như "Đang chờ phản hồi" mà bạn có trong S2 - Sắp xếp.</div>
+                                    <div id="d4" class="interactive-content hidden p-4 bg-slate-50 rounded-lg border border-slate-200"><strong>Defer:</strong> Đối với những email yêu cầu hành động phức tạp, hãy đưa nó ra khỏi hộp thư đến bằng cách "Gắn cờ" (<strong>Flag</strong>) hoặc tạo một tác vụ mới trong <strong>Microsoft To Do</strong> từ email đó.</div>
+                                </div>
+                            </div>
+                            <!-- Block 2: Ignore Conversation -->
+                            <div class="p-6 rounded-lg border border-slate-200">
+                                <button data-target="ignore-content" class="collapsible-button w-full flex justify-center items-center gap-3">
+                                    <h3 class="font-bold text-2xl font-custom text-emerald-600">CHỨC NĂNG IGNORE</h3>
+                                    <span class="arrow-span text-slate-500 text-2xl transition-transform duration-300">▼</span>
+                                </button>
+                                <div id="ignore-content" class="interactive-content hidden mt-4">
+                                    <p>Đối với các chuỗi email dài mà bạn không còn liên quan, hãy sử dụng tính năng <strong>Ignore Conversation</strong> để tự động xóa tất cả các email hiện tại và tương lai trong chuỗi đó.</p>
+                                    <img src="Source/Ignore-Outlook.png" alt="Ignore Conversation in Outlook" class="mt-4 rounded-lg shadow-md w-full h-auto">
+                                </div>
+                            </div>
+                            <!-- Block 3: Set Rules -->
+                            <div class="p-6 rounded-lg border border-slate-200">
+                                <button data-target="rules-content" class="collapsible-button w-full flex justify-center items-center gap-3">
+                                    <h3 class="font-bold text-2xl font-custom text-emerald-600">SET RULE</h3>
+                                    <span class="arrow-span text-slate-500 text-2xl transition-transform duration-300">▼</span>
+                                </button>
+                                <div id="rules-content" class="interactive-content hidden mt-4">
+                                    <p>Thiết lập các quy tắc (<strong>Rules</strong>) tự động để chuyển các email có mức độ ưu tiên thấp ra khỏi hộp thư đến chính. Dưới đây là một số quy tắc phổ biến:</p>
+                                    <ul>
+                                        <li><strong>Di chuyển bản tin:</strong> Tạo quy tắc để di chuyển tất cả email từ các danh sách gửi thư hoặc bản tin vào một thư mục riêng tên là "Reading" hoặc "Newsletters".</li>
+                                        <li><strong>Gom thông báo tự động:</strong> Nếu bạn nhận được nhiều thông báo từ các hệ thống như Jira, Confluence, hãy tạo quy tắc để chuyển chúng vào thư mục "Notifications".</li>
+                                        <li><strong>Phân loại email CC:</strong> Tạo quy tắc để tự động di chuyển các email mà bạn chỉ được CC (không phải người nhận chính) vào một thư mục "Low Priority".</li>
+                                        <li><strong>Sắp xếp theo dự án/khách hàng:</strong> Tạo quy tắc dựa trên địa chỉ người gửi hoặc từ khóa trong tiêu đề để tự động chuyển email vào các thư mục dự án tương ứng.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="s1-onedrive" class="tab-content" data-app="s1">
+                         <div class="space-y-8">
+                            <div class="p-6 rounded-lg border border-slate-200">
+                                <button data-target="s1-onedrive-duplicate" class="collapsible-button w-full flex justify-center items-center gap-3">
+                                    <h4 class="font-bold text-2xl font-custom">LOẠI BỎ TỆP TRÙNG LẶP</h4>
+                                    <span class="arrow-span text-slate-800 text-2xl transition-transform duration-300">▼</span>
+                                </button>
+                                <div id="s1-onedrive-duplicate" class="interactive-content hidden mt-4">
+                                    <p>Hệ sinh thái M365 không có công cụ tích hợp để quét tệp trùng lặp. Việc sử dụng các công cụ của bên thứ ba như <strong>DupInOut Duplicate Finder</strong> là rất cần thiết để hoàn thành giai đoạn này một cách triệt để.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="s2" class="content-section">
+                    <div class="text-center mb-10">
+                        <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 mb-3 font-condensed">SẮP XẾP 🗂️</h2>
+                         <p class="text-lg text-slate-500">Biến Outlook thành một nơi làm việc ngăn nắp, giúp bạn tập trung vào những gì quan trọng thay vì bị email làm phiền.</p>
+                    </div>
+
+                    <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 text-center mb-8">
+                        <p class="italic text-slate-600">Giai đoạn Sắp xếp tập trung vào việc tổ chức và sắp đặt mọi thứ một cách khoa học, sao cho bất kỳ ai cũng có thể dễ dàng tìm thấy, sử dụng và trả lại đúng vị trí.</p>
+                    </div>
+                   
+                    <div class="p-1 bg-slate-100 rounded-full inline-flex space-x-1 mb-8">
+                        <a href="#" class="tab-link px-5 py-2 rounded-full text-sm font-semibold text-slate-500" data-app="s2" data-target="outlook">Outlook</a>
+                        <a href="#" class="tab-link px-5 py-2 rounded-full text-sm font-semibold text-slate-500" data-app="s2" data-target="onedrive">OneDrive / SharePoint</a>
+                    </div>
+
+                    <div id="s2-outlook" class="tab-content" data-app="s2">
+                        <div class="space-y-8">
+                            <div class="p-6 rounded-lg border border-slate-200">
+                                <button data-target="s2-outlook-tools" class="collapsible-button w-full flex justify-center items-center gap-3">
+                                    <h4 class="font-bold text-2xl font-custom">CÔNG CỤ XỬ LÝ NHANH TRONG HỘP THƯ ĐẾN</h4>
+                                    <span class="arrow-span text-slate-800 text-2xl transition-transform duration-300">▼</span>
+                                </button>
+                                <div id="s2-outlook-tools" class="interactive-content hidden mt-4">
+                                    <ul>
+                                        <li><strong>Pin (Ghim):</strong> Dùng cho các email chứa thông tin quan trọng cần truy cập thường xuyên và phải luôn ở trên cùng hộp thư (ví dụ: link tài liệu, lịch họp, hướng dẫn hệ thống).
+                                            <img src="Source/Pin-Outlook.png" alt="Pin feature in Outlook" class="mt-4 rounded-lg shadow-md w-full h-auto">
+                                        </li>
+                                        <li class="mt-4"><strong>Flag (Gắn cờ):</strong> Dành cho các email cần hành động cụ thể: có deadline, cần trả lời, hoặc đang chờ phản hồi từ người khác (ví dụ: email báo cáo, form từ HR).
+                                            <img src="Source/Flagged-Email-Outlook-1.png" alt="Flagged email example 1" class="mt-4 rounded-lg shadow-md w-full h-auto">
+                                            <img src="Source/Flagged-Email-Outlook.png" alt="Flagged email example 2" class="mt-4 rounded-lg shadow-md w-full h-auto">
+                                        </li>
+                                        <li class="mt-4"><strong>Snooze (Tạm ẩn):</strong> Dùng khi bạn muốn "hoãn" một email. Nó sẽ biến mất khỏi hộp thư đến và xuất hiện lại vào thời gian bạn đã hẹn. Rất hữu ích cho các email chưa cần xử lý ngay.
+                                            <img src="Source/Snooze-Outlook.png" alt="Snooze feature in Outlook" class="mt-4 rounded-lg shadow-md w-full h-auto">
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                             <div class="p-6 rounded-lg border border-slate-200">
+                                <button data-target="s2-outlook-system" class="collapsible-button w-full flex justify-center items-center gap-3">
+                                    <h4 class="font-bold text-2xl font-custom">SẮP XẾP MỘT CÁCH THÔNG MINH</h4>
+                                    <span class="arrow-span text-slate-800 text-2xl transition-transform duration-300">▼</span>
+                                </button>
+                                <div id="s2-outlook-system" class="interactive-content hidden mt-4">
+                                    <p><strong>Folders vs. Categories: Đâu là lựa chọn tốt nhất?</strong> Câu trả lời là cả hai!</p>
+                                    <ul>
+                                        <li>
+                                            <strong>Folders:</strong> Mỗi email chỉ có thể nằm trong <strong>một</strong> thư mục duy nhất. Hãy tạo ra các thư mục để lưu trữ lâu dài.
+                                            <ul class="pl-6 mt-2" style="list-style-type: circle;">
+                                                <li><strong>Favorites:</strong> Kéo các thư mục quan trọng (phòng ban, dự án đang làm) vào đây để truy cập nhanh.</li>
+                                                <li><strong>Reference:</strong> Thư mục lưu các tài liệu tham khảo, có thể sử dụng lâu dài nhưng không cần truy cập thường xuyên. Bạn có thể tạo các thư mục con trong này theo tên khách hàng hoặc dự án (vd: Muji Reference, Tendam Reference).</li>
+                                            </ul>
+                                            <img src="Source/Folder-Outlook.png" alt="Folder structure in Outlook" class="mt-4 rounded-lg shadow-md w-full h-auto">
+                                        </li>
+                                        <li class="mt-4">
+                                            <strong>Categories:</strong> Một email có thể được gán <strong>nhiều</strong> danh mục (gắn tag màu). Điều này cực kỳ linh hoạt, giúp bạn nhóm các email theo chủ đề, dự án, hoặc mức độ ưu tiên mà không cần di chuyển chúng.
+                                            <img src="Source/Categories-Outlook.png" alt="Categories in Outlook" class="mt-4 rounded-lg shadow-md w-full h-auto">
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="p-6 rounded-lg border border-slate-200">
+                                <button data-target="s2-outlook-automate" class="collapsible-button w-full flex justify-center items-center gap-3">
+                                    <h4 class="font-bold text-2xl font-custom">TỰ ĐỘNG HÓA & TÌM KIẾM NÂNG CAO</h4>
+                                    <span class="arrow-span text-slate-800 text-2xl transition-transform duration-300">▼</span>
+                                </button>
+                                <div id="s2-outlook-automate" class="interactive-content hidden mt-4">
+                                    <ul>
+                                        <li><strong>Quick Steps:</strong> Công cụ tuyệt vời để tự động hóa các hành động lặp đi lặp lại. Ví dụ, tạo một Quick Step tên "Move to Reference" để tự động di chuyển email vào thư mục Reference và đánh dấu là đã đọc chỉ bằng một cú nhấp chuột.
+                                            <img src="Source/QuickStep-Outlook.png" alt="Quick Steps in Outlook" class="mt-4 rounded-lg shadow-md w-full h-auto">
+                                        </li>
+                                        <li class="mt-4"><strong>Search Folders:</strong> Đây là các thư mục "ảo" giúp khắc phục điểm yếu của Categories. Bạn có thể tạo một Search Folder để hiển thị tất cả email được gán một Category nhất định, bất kể chúng đang nằm ở thư mục vật lý nào.
+                                             <img src="Source/Outllok-Search-Folders-1.png" alt="Search Folders in Outlook" class="mt-4 rounded-lg shadow-md w-full h-auto">
+                                        </li>
+                                        <li class="mt-4"><strong>Rules:</strong> Thiết lập các quy tắc để Outlook tự động dọn dẹp. Ví dụ: tạo Rule để tự động "Dọn sạch thư mục Deleted Items mỗi khi thoát Outlook" hoặc áp dụng Assigned Policy để tự động xóa email sau một khoảng thời gian nhất định.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                             <div class="p-6 rounded-lg border border-slate-200">
+                                <button data-target="s2-outlook-pro" class="collapsible-button w-full flex justify-center items-center gap-3">
+                                    <h4 class="font-bold text-2xl font-custom">MẸO VỚI AI</h4>
+                                    <span class="arrow-span text-slate-800 text-2xl transition-transform duration-300">▼</span>
+                                </button>
+                                <div id="s2-outlook-pro" class="interactive-content hidden mt-4">
+                                    <p>Khi bạn lười mở handbook hoặc không chắc nên chia thư mục thế nào, hãy thử hỏi <strong>Copilot</strong>! Bạn có thể hỏi trực tiếp: "Gợi ý cách chia folder trong Outlook cho một Project Manager" hoặc "Hướng dẫn cách dùng tính năng Quick Steps".</p>
+                                    <p><strong>Gợi ý:</strong> Quay các video màn hình ngắn hướng dẫn các tính năng này và chia sẻ trong team để mọi người cùng áp dụng.</p>
+ <img src="Source/Copilot-Outlook.png" alt="Copilot-Outlook" class="mt-4 rounded-lg shadow-md w-full h-auto">
+                                        </li>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="s2-onedrive" class="tab-content" data-app="s2">
+                        <div class="space-y-8">
+                             <div class="p-6 rounded-lg border border-slate-200">
+                                <button data-target="s2-onedrive-content" class="collapsible-button w-full flex justify-center items-center gap-3">
+                                    <h4 class="font-bold text-2xl font-custom">ONEDRIVE - KIẾN TRÚC TỆP CÁ NHÂN</h4>
+                                    <span class="arrow-span text-slate-800 text-2xl transition-transform duration-300">▼</span>
+                                </button>
+                                <div id="s2-onedrive-content" class="interactive-content hidden mt-4">
+                                    <ul>
+                                        <li><strong>Nguyên tắc phân cấp "nông":</strong> Tránh tạo cấu trúc thư mục lồng nhau quá sâu. Áp dụng cấu trúc logic nhưng phẳng, ví dụ: <code>Năm > Tên Dự Án > Loại Tài Liệu</code>.</li>
+                                        <li><strong>Quy ước đặt tên chuẩn hóa:</strong> Sử dụng định dạng chuẩn như <code>YYYYMMDD_TenDuAn_LoaiTaiLieu_v01.docx</code>.</li>
+                                        <li><strong>Cấu trúc thư mục theo hành động:</strong> Sử dụng các thư mục cấp cao như <code>01_Working</code>, <code>02_Review</code>, <code>03_Final</code>, và <code>04_Archive</code>.</li>
+                                        <li><strong>Dấu hiệu trực quan:</strong> Tận dụng tính năng mã hóa màu sắc thư mục để phân biệt nhanh các loại dự án.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="p-6 rounded-lg border border-slate-200">
+                                <button data-target="s2-sharepoint-content" class="collapsible-button w-full flex justify-center items-center gap-3">
+                                    <h4 class="font-bold text-2xl font-custom">SHAREPOINT - SỨC MẠNH CỦA SIÊU DỮ LIỆU</h4>
+                                    <span class="arrow-span text-slate-800 text-2xl transition-transform duration-300">▼</span>
+                                </button>
+                                <div id="s2-sharepoint-content" class="interactive-content hidden mt-4">
+                                    <p>Sử dụng SharePoint chỉ như một "ổ đĩa chung với các thư mục" là bỏ lỡ giá trị cốt lõi của nó. Siêu dữ liệu (metadata) cho phép bạn "gắn thẻ" tệp với nhiều thuộc tính, giúp nó có thể được tìm thấy và lọc theo nhiều cách khác nhau.</p>
+                                    <ul>
+                                        <li><strong>Cột Lựa chọn (Choice):</strong> Tạo cột <strong>Trạng thái tài liệu</strong> với các lựa chọn như "Bản nháp", "Đang xem xét", "Đã phê duyệt".</li>
+                                        <li><strong>Cột Ngày (Date):</strong> Tạo cột <strong>Ngày xem xét lại</strong> để theo dõi thời hạn.</li>
+                                        <li><strong>Cột Người (Person):</strong> Tạo cột <strong>Người sở hữu</strong> để chỉ định trách nhiệm.</li>
+                                        <li><strong>Tạo các Chế độ xem (Views) mạnh mẽ:</strong> Tạo các chế độ xem được lọc động như "Tài liệu của tôi cần phê duyệt" hoặc "Hợp đồng hết hạn trong tháng này".</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="s3" class="content-section">
+                    <div class="text-center mb-10">
+                        <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 mb-3 font-condensed">SẠCH SẼ ✨</h2>
+                        <p class="text-lg text-slate-500">Thực hành vệ sinh kỹ thuật số</p>
+                    </div>
+
+                    <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 text-center mb-8">
+                        <p class="italic text-slate-600">Giai đoạn Sạch sẽ là việc thiết lập thói quen vệ sinh không gian làm việc kỹ thuật số một cách thường xuyên, không chỉ để duy trì trật tự mà còn để kịp thời phát hiện các vấn đề tiềm ẩn.</p>
+                    </div>
+
+                    <div class="space-y-8">
+                        <div class="p-6 rounded-lg border border-slate-200">
+                            <button data-target="s3-daily-content" class="collapsible-button w-full flex justify-center items-center gap-3">
+                                <h3 class="font-bold text-2xl font-custom">SẠCH SẼ HÀNG NGÀY</h3>
+                                <span class="arrow-span text-slate-800 text-2xl transition-transform duration-300">▼</span>
+                            </button>
+                            <div id="s3-daily-content" class="interactive-content hidden mt-4">
+                                <p>"Inbox Zero" là một triết lý về việc xử lý: không một email nào được phép nằm lại trong hộp thư đến mà không có một quyết định rõ ràng về nó. Hãy thiết lập một thói quen hàng ngày để áp dụng phương pháp "Bốn chữ D" cho mọi email mới.</p>
+ <img src="Source/Inbox-Zero-Outlook-Workflow-Chart.png" alt="Inbox-Zero-Outlook-Workflow-Chart" class="mt-4 rounded-lg shadow-md w-full h-auto">
+                                        </li>
+
+                            </div>
+                        </div>
+                        <div class="p-6 rounded-lg border border-slate-200">
+                            <button data-target="s3-weekly-content" class="collapsible-button w-full flex justify-center items-center gap-3">
+                                <h3 class="font-bold text-2xl font-custom">SẠCH SẼ HÀNG TUẦN</h3>
+                                <span class="arrow-span text-slate-800 text-2xl transition-transform duration-300">▼</span>
+                            </button>
+                            <div id="s3-weekly-content" class="interactive-content hidden mt-4">
+                                <p>Đặt một cuộc hẹn định kỳ trên lịch của bạn (ví dụ: 30 phút vào chiều thứ Sáu) để "quét" không gian kỹ thuật số.</p>
+                                <ul>
+                                    <li>Dọn dẹp thư mục <strong>Downloads (Tải về)</strong> trên máy tính.</li>
+                                    <li>Xử lý tất cả các tệp trong thư mục <strong>_RedTag_Review</strong>.</li>
+                                    <li>Di chuyển các thư mục dự án đã hoàn thành vào thư mục <strong>Archive (Lưu trữ)</strong>.</li>
+                                    <li>Kiểm tra và thu hồi các quyền truy cập chia sẻ không cần thiết trên OneDrive và SharePoint.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="p-6 rounded-lg border border-slate-200">
+                             <button data-target="s3-proactive-content" class="collapsible-button w-full flex justify-center items-center gap-3">
+                                <h3 class="font-bold text-2xl font-custom">SẠCH SẼ CHỦ ĐỘNG</h3>
+                                <span class="arrow-span text-slate-800 text-2xl transition-transform duration-300">▼</span>
+                            </button>
+                            <div id="s3-proactive-content" class="interactive-content hidden mt-4">
+                                <ul>
+                                    <li><strong>Kiểm soát thông báo:</strong> Vào phần cài đặt của Outlook, Teams và các ứng dụng khác để tắt một cách có chiến lược tất cả các thông báo không cần thiết.</li>
+                                    <li><strong>Hủy đăng ký:</strong> Thay vì chỉ xóa các bản tin không mong muốn, hãy dành thêm vài giây để nhấp vào liên kết <strong>"Unsubscribe"</strong>.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="s4" class="content-section">
+                     <div class="text-center mb-10">
+                        <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 mb-3 font-condensed">SĂN SÓC 🔄</h2>
+                        <p class="text-lg text-slate-500">Chuẩn hóa các thư mục giúp công việc thuận lợi hơn</p>
+                    </div>
+
+                    <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 text-center mb-8">
+                        <p class="italic text-slate-600">Giai đoạn Săn sóc tập trung vào việc chuẩn hóa các quy trình, tạo ra các quy tắc và tiêu chuẩn để duy trì một cách nhất quán thành quả của ba giai đoạn đầu tiên.</p>
+                    </div>
+
+                    <div class="space-y-8">
+                        <div class="p-6 rounded-lg border border-slate-200">
+                            <button data-target="s4-policy-content" class="collapsible-button w-full flex justify-center items-center gap-3">
+                                <h3 class="font-bold text-2xl font-custom">SET RULES</h3>
+                                <span class="arrow-span text-slate-800 text-2xl transition-transform duration-300">▼</span>
+                            </button>
+                            <div id="s4-policy-content" class="interactive-content hidden mt-4">
+                                <p>Tạo rules để phân loại các email:</p>
+                                <ul>
+                                    <li>Quy ước đặt tên tệp chuẩn cho các email, folders.</li>
+                                    <li>Phân biệt bằng màu sắc.</li>
+				    <li>Ngoài ra còn có quy tắc về thời gian email tồn tại.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="p-6 rounded-lg border border-slate-200">
+                            <button data-target="s4-automate-content" class="collapsible-button w-full flex justify-center items-center gap-3">
+                                <h3 class="font-bold text-2xl font-custom">CHUẨN HÓA VỚI POWER AUTOMATE</h3>
+                                <span class="arrow-span text-slate-800 text-2xl transition-transform duration-300">▼</span>
+                            </button>
+                            <div id="s4-automate-content" class="interactive-content hidden mt-4">
+                                <p>Power Automate là công cụ mạnh mẽ nhất để thực thi các tiêu chuẩn một cách tự động, loại bỏ yếu tố lỗi của con người. Nó là một cơ chế thực thi hành vi, giúp việc tuân thủ tiêu chuẩn trở thành con đường ít kháng cự nhất.</p>
+                                <ul>
+                                    <li><strong>Quy trình #1: Tự động lưu trữ tệp đính kèm.</strong> "Khi một email mới có tệp đính kèm đến, hãy tự động lưu tệp đó vào thư mục SharePoint và áp dụng siêu dữ liệu".</li>
+                                    <li><strong>Quy trình #2: Tạo tác vụ từ email được gắn cờ.</strong> "Khi một email được gắn cờ trong Outlook, hãy tự động tạo một tác vụ mới trong Microsoft To Do hoặc Planner".</li>
+                                    <li><strong>Quy trình #3: Nhắc nhở ngày xem xét tài liệu.</strong> "Bảy ngày trước Ngày xem xét lại của một tài liệu SharePoint, hãy gửi email nhắc nhở đến Người sở hữu".</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="p-6 rounded-lg border border-slate-200">
+                            <button data-target="s4-template-content" class="collapsible-button w-full flex justify-center items-center gap-3">
+                                <h3 class="font-bold text-2xl font-custom">ĐẢM BẢO TÍNH NHẤT QUÁN VỚI TEMPLATES</h3>
+                                <span class="arrow-span text-slate-800 text-2xl transition-transform duration-300">▼</span>
+                            </button>
+                            <div id="s4-template-content" class="interactive-content hidden mt-4">
+                                <ul>
+                                    <li><strong>SharePoint:</strong> Sử dụng các mẫu thư viện tài liệu để tự động áp dụng các cột siêu dữ liệu đã định cấu hình.</li>
+                                    <li><strong>Outlook:</strong> Sử dụng Quick Parts và Email Templates để tạo các câu trả lời chuẩn.</li>
+                                        <img src="Source/Training-Invitation.png" alt="Training-Invitation" class="mt-4 rounded-lg shadow-md w-full h-auto">
+                                        <p class="text-center italic text-sm text-gray-500 mt-2">Hình ảnh một template có thể sử dụng</p>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="s5" class="content-section">
+                    <div class="text-center mb-10">
+                        <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 mb-3 font-condensed">SẴN SÀNG 💪</h2>
+                        <p class="text-lg text-slate-500">Nuôi dưỡng văn hóa kỷ luật trên môi trường số</p>
+                    </div>
+
+                    <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 text-center mb-8">
+                        <p class="italic text-slate-600">Giai đoạn Sẵn sàng là bước cuối cùng, nhằm mục đích rèn luyện ý thức tự giác, biến các hoạt động 5S trở thành một thói quen và một phần không thể thiếu trong văn hóa làm việc.</p>
+                    </div>
+
+                    <div class="space-y-8">
+                         <div class="p-6 rounded-lg border border-slate-200">
+                            <button data-target="s5-track-content" class="collapsible-button w-full flex justify-center items-center gap-3">
+                                <h3 class="font-bold text-2xl font-custom">LET'S 5S ONLINE</h3>
+                                <span class="arrow-span text-slate-800 text-2xl transition-transform duration-300">▼</span>
+                            </button>
+                            <div id="s5-track-content" class="interactive-content hidden mt-4">
+                                <ul>
+				<p>Cùng duy trì 5S Online để biến nó trở thành thói quen và văn hóa</p>
+                                    <li><strong>Clean up day:</strong> Hưởng ứng ngày dọn dẹp bằng cách 5S Online và đăng bài lan tỏa thông qua cộng đồng "Green Committee Vietnam". </li>
+ <img src="Source/GCVN-Pic.png" alt="GCVN-Pic" class="mt-4 rounded-lg shadow-md w-full h-auto">
+<p>Hãy cùng chia sẻ lượng CO2 mà bạn đã hạn chết thải ra môi trường với mọi người trong cộng và đồng</p>
+<img src="Source/GCVN-post.png" alt="GCVN-post" class="mt-4 rounded-lg shadow-md w-full h-auto">
+<p>Và đâu là danh hiệu bạn có thể đạt được?</p>
+<img src="Source/mam-xanh-y-thuc.png" alt="mam-xanh-y-thuc" class="mt-4 rounded-lg shadow-md w-full h-auto">
+
+                                    <li><strong>Duy trì cá nhân với To Do:</strong> Sử dụng To Do để đặt các lời nhắc cá nhân cho các công việc vệ sinh kỹ thuật số hàng ngày, đồng bộ hóa từ Outlook và Planner.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="p-6 rounded-lg border border-slate-200">
+                            <button data-target="s5-measure-content" class="collapsible-button w-full flex justify-center items-center gap-3">
+                                <h3 class="font-bold text-2xl font-custom">ĐO LƯỜNG ĐỂ CẢI TIẾN</h3>
+                                <span class="arrow-span text-slate-800 text-2xl transition-transform duration-300">▼</span>
+                            </button>
+                            <div id="s5-measure-content" class="interactive-content hidden mt-4">
+                                <ul>
+                                    <li><strong>Tạo Audit Checklist:</strong> Handbook sẽ cung cấp cho bạn 1 checklist nhỏ để gợi ý các hành động các bạn cần làm để thực hành 5S Online. Bạn có thể làm theo các mục được gợi ý</li>         
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="p-6 rounded-lg border border-slate-200">
+                            <button data-target="s5-leadership-content" class="collapsible-button w-full flex justify-center items-center gap-3">
+                                <h3 class="font-bold text-2xl font-custom">VAI TRÒ CỦA LÃNH ĐẠO</h3>
+                                <span class="arrow-span text-slate-800 text-2xl transition-transform duration-300">▼</span>
+                            </button>
+                            <div id="s5-leadership-content" class="interactive-content hidden mt-4">
+                                <p>Sự thành công lâu dài của 5S phụ thuộc rất nhiều vào sự cam kết từ cấp quản lý. Lãnh đạo cần phải làm gương và thường xuyên nhấn mạnh tầm quan trọng của kỷ luật kỹ thuật số.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="office-2-0" class="content-section">
+                    <div class="text-center mb-10">
+                        <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 mb-3 font-condensed">OFFICE 2.0 x 5S ONLINE 🏢</h2>
+                        <p class="text-lg text-slate-500">Từ Không Gian Vật Lý đến Kỷ Luật Số</p>
+                    </div>
+
+                    <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 text-center mb-8">
+                        <p class="italic text-slate-600">Sáng kiến Office 2.0 là sự thể hiện hoàn hảo của 5S trong môi trường làm việc vật lý. 5S Online mở rộng những nguyên tắc này vào không gian kỹ thuật số của chúng ta, tạo ra một hệ sinh thái làm việc hiệu quả và gọn gàng toàn diện.</p>
+                    </div>
+                    
+                    <div class="overflow-x-auto rounded-lg mt-4">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th class="w-1/3">Nguyên tắc Office 2.0</th>
+                                    <th class="w-1/3">Liên kết với 5S</th>
+                                    <th class="w-1/3">Áp dụng trong 5S Online (Kỹ thuật số)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>"Không đồ linh tinh, không đồ cá nhân"</strong> trên bàn làm việc.</td>
+                                    <td><strong>S1 - Sàng lọc (Seiri):</strong> Loại bỏ những thứ không cần thiết.</td>
+                                    <td>Xóa email và tệp tin rác. Áp dụng quy tắc 4D (Delete, Do, Delegate, Defer) để giữ hộp thư đến sạch sẽ.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>"Để tài liệu/vật dụng vào tủ đúng nơi quy định."</strong></td>
+                                    <td><strong>S2 - Sắp xếp (Seiton):</strong> Mọi thứ đều có vị trí riêng.</td>
+                                    <td>Xây dựng cấu trúc thư mục logic trên OneDrive/SharePoint. Sử dụng Categories và Folders trong Outlook để phân loại email.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>"Luôn đảm bảo duy trì hiện trạng luôn mới, sạch sẽ, ngăn nắp."</strong></td>
+                                    <td><strong>S3 - Sạch sẽ (Seiso):</strong> Thường xuyên vệ sinh, dọn dẹp.</td>
+                                    <td>Thực hành "Inbox Zero" hàng ngày. Dọn dẹp thư mục "Downloads" và thùng rác hàng tuần.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>"Không giấy"</strong> và <strong>"Phân loại rác đúng quy định."</strong></td>
+                                    <td><strong>S4 - Săn sóc (Seiketsu):</strong> Chuẩn hóa quy trình.</td>
+                                    <td>Thiết lập quy ước đặt tên tệp thống nhất. Tạo Rules trong Outlook để tự động hóa việc sắp xếp email.</td>
+                                </tr>
+                                <tr>
+                                    <td>Toàn bộ sáng kiến <strong>"Góc làm sạch xinh"</strong>.</td>
+                                    <td><strong>S5 - Sẵn sàng (Shitsuke):</strong> Duy trì và rèn luyện thói quen.</td>
+                                    <td>Biến việc tổ chức không gian số thành một phần của văn hóa làm việc, tự giác thực hiện và nhắc nhở đồng nghiệp.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                     <img src="Source/Office20.png" alt="Office 2.0 Infographic" class="mt-8 rounded-lg shadow-md w-full h-auto">
+                </section>
+
+            </div>
+        </main>
+    </div>
+
+    <div id="lightbox" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 z-50 hidden">
+        <span id="lightbox-close" class="absolute top-4 right-4 text-white text-3xl font-bold cursor-pointer">&times;</span>
+        <img id="lightbox-img" src="" alt="Phóng to hình ảnh" class="max-w-full max-h-full rounded-lg">
+    </div>
+
+    <div id="progress-popup" class="fixed bottom-5 left-1/2 -translate-x-1/2 w-full max-w-sm p-4 rounded-lg shadow-2xl text-center font-semibold opacity-0 transform translate-y-4 pointer-events-none" style="background-color: #1e293b; color: white; transition: all 0.4s ease-in-out;">
+        <p id="progress-popup-icon" class="text-4xl mb-2"></p>
+        <p id="progress-popup-message" class="text-base"></p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mainNavLinks = document.querySelectorAll('.nav-link');
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+            const contentSections = document.querySelectorAll('.content-section');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            function setActiveSection(targetId) {
+                contentSections.forEach(section => {
+                    section.classList.toggle('active', section.id === targetId);
+                });
+                mainNavLinks.forEach(link => {
+                    link.classList.toggle('active', link.dataset.target === targetId);
+                });
+                mobileNavLinks.forEach(link => {
+                    link.classList.toggle('bg-emerald-100', link.dataset.target === targetId);
+                });
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            function showSectionFromHash() {
+                const hash = window.location.hash.substring(1);
+                const targetId = (document.getElementById(hash) && document.getElementById(hash).classList.contains('content-section')) ? hash : 'gioi-thieu';
+                
+                if (!document.getElementById(targetId)) {
+                    setActiveSection('gioi-thieu');
+                    return;
+                }
+                
+                setActiveSection(targetId);
+
+                if (!window.location.hash || window.location.hash === '#') {
+                    history.replaceState(null, null, '#gioi-thieu');
+                }
+            }
+
+            function handleNavClick(e) {
+                e.preventDefault();
+                const targetId = e.currentTarget.dataset.target;
+                window.location.hash = targetId;
+                if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+            }
+            
+            mainNavLinks.forEach(link => link.addEventListener('click', handleNavClick));
+            mobileNavLinks.forEach(link => link.addEventListener('click', handleNavClick));
+            window.addEventListener('hashchange', showSectionFromHash, false);
+
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            const tabLinks = document.querySelectorAll('.tab-link');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            function setActiveTab(app, targetId) {
+                document.querySelectorAll(`.tab-link[data-app="${app}"]`).forEach(link => {
+                    link.classList.toggle('active', link.dataset.target === targetId);
+                });
+                document.querySelectorAll(`.tab-content[data-app="${app}"]`).forEach(content => {
+                    content.classList.toggle('active', content.id === `${app}-${targetId}`);
+                });
+            }
+
+            tabLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const app = this.dataset.app;
+                    const targetId = this.dataset.target;
+                    setActiveTab(app, targetId);
+                });
+            });
+
+            const emailInput = document.getElementById('email-input');
+            const co2Result = document.getElementById('co2-result');
+            const feedbackPopup = document.getElementById('feedback-popup');
+            const popupMessage = document.getElementById('popup-message');
+            const popupIcon = document.getElementById('popup-icon');
+            const CO2_PER_EMAIL_GRAMS = 0.3;
+            let popupTimeout;
+
+            emailInput.addEventListener('input', function() {
+                clearTimeout(popupTimeout);
+                const emailCount = parseInt(this.value, 10);
+
+                if (isNaN(emailCount) || emailCount <= 0) {
+                    co2Result.textContent = '0';
+                    feedbackPopup.classList.add('opacity-0', 'translate-y-2');
+                    return;
+                }
+                
+                const totalCo2 = emailCount * CO2_PER_EMAIL_GRAMS;
+                co2Result.textContent = totalCo2.toFixed(1).replace('.', ',');
+
+                let message = '';
+                let icon = '';
+                if (emailCount >= 1 && emailCount <= 5) {
+                    message = 'Danh hiệu: Mầm Xanh Ý Thức';
+                    icon = ' ';
+                } else if (emailCount > 5 && emailCount <= 10) {
+                    message = 'Danh hiệu: Anh Hùng Tinh Gọn';
+                    icon = '✨';
+                } else if (emailCount > 10) {
+                    message = 'Danh hiệu: Đại Sứ 5S';
+                    icon = ' ';
+                }
+
+                if (message) {
+                    popupMessage.textContent = message;
+                    popupIcon.textContent = icon;
+                    feedbackPopup.classList.remove('opacity-0', 'translate-y-2');
+                    
+                    popupTimeout = setTimeout(() => {
+                        feedbackPopup.classList.add('opacity-0', 'translate-y-2');
+                    }, 5000);
+                } else {
+                     feedbackPopup.classList.add('opacity-0', 'translate-y-2');
+                }
+            });
+
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const lightboxClose = document.getElementById('lightbox-close');
+            const greenLogoThumb = document.getElementById('green-logo-thumb');
+            const posterThumb = document.getElementById('poster-thumb');
+
+            function openLightbox(src) {
+                lightboxImg.src = src;
+                lightbox.classList.remove('hidden');
+            }
+
+            function closeLightbox() {
+                lightbox.classList.add('hidden');
+            }
+
+            if (greenLogoThumb) {
+                greenLogoThumb.addEventListener('click', function() { openLightbox(this.src); });
+            }
+            if (posterThumb) {
+                posterThumb.addEventListener('click', function() { openLightbox(this.src); });
+            }
+            if (lightboxClose) {
+                lightboxClose.addEventListener('click', closeLightbox);
+            }
+            if (lightbox) {
+                lightbox.addEventListener('click', function(e) {
+                    if (e.target === lightbox) {
+                        closeLightbox();
+                    }
+                });
+            }
+            
+            const dButtons = document.querySelectorAll('.d-button');
+            dButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const targetId = this.dataset.target;
+                    const targetContent = document.getElementById(targetId);
+                    const isActive = this.classList.contains('active');
+                    
+                    document.querySelectorAll('.d-button').forEach(btn => {
+                        const contentId = btn.dataset.target;
+                        document.getElementById(contentId).classList.add('hidden');
+                        btn.classList.remove('active');
+                    });
+
+                    if (!isActive) {
+                        targetContent.classList.remove('hidden');
+                        this.classList.add('active');
+                    }
+                });
+            });
+
+            const collapsibleButtons = document.querySelectorAll('.collapsible-button');
+            collapsibleButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const targetId = this.dataset.target;
+                    const content = document.getElementById(targetId);
+                    const arrow = this.querySelector('.arrow-span');
+                    
+                    if (content) {
+                        const isHidden = content.classList.contains('hidden');
+                        if (isHidden) {
+                            content.classList.remove('hidden');
+                        } else {
+                            content.classList.add('hidden');
+                        }
+                        
+                        this.classList.toggle('active');
+                        arrow.classList.toggle('rotate-180');
+                    }
+                });
+            });
+
+            function setupChecklist() {
+                const checklistItems = document.querySelectorAll('input.checklist-item');
+                const progressBar = document.getElementById('progress-bar');
+                const progressText = document.getElementById('progress-text');
+                const totalItems = checklistItems.length;
+                const progressPopup = document.getElementById('progress-popup');
+                const progressPopupIcon = document.getElementById('progress-popup-icon');
+                const progressPopupMessage = document.getElementById('progress-popup-message');
+                let progressPopupTimeout;
+
+                function updateProgress(itemWasJustChecked) {
+                    if (!progressBar || !progressText) return;
+                    const checkedItems = document.querySelectorAll('input.checklist-item:checked').length;
+                    const percentage = totalItems > 0 ? Math.round((checkedItems / totalItems) * 100) : 0;
+                    
+                    progressBar.style.width = percentage + '%';
+                    progressText.textContent = percentage + '%';
+
+                    clearTimeout(progressPopupTimeout);
+                    progressPopup.classList.add('opacity-0', 'translate-y-4');
+
+                    if (itemWasJustChecked) {
+                        let message = '';
+                        let icon = '';
+
+                        if (percentage === 100) {
+                            message = 'Tuyệt vời! Bạn đã hoàn thành xuất sắc và là một tấm gương 5S!';
+                            icon = '🏆';
+                        } else if (percentage >= 75) {
+                            message = 'Thật đáng ngưỡng mộ! Bạn gần đến đích rồi.';
+                            icon = '🎉';
+                        } else if (percentage >= 50) {
+                            message = 'Bạn đang tiến bộ vượt bậc! Hãy giữ vững phong độ nhé.';
+                            icon = '🤩';
+                        } else if (percentage >= 25) {
+                            message = 'Bạn đang làm rất tốt! Hãy tiếp tục phát huy.';
+                            icon = '👍';
+                        } else if (percentage > 0) {
+                            message = 'Mỗi bước nhỏ đều đáng quý. Cố lên nhé!';
+                            icon = '🌱';
+                        }
+
+                        if (message) {
+                            progressPopupIcon.textContent = icon;
+                            progressPopupMessage.textContent = message;
+                            progressPopup.classList.remove('opacity-0', 'translate-y-4');
+
+                            progressPopupTimeout = setTimeout(() => {
+                                progressPopup.classList.add('opacity-0', 'translate-y-4');
+                            }, 4000);
+                        }
+                    }
+                }
+
+                checklistItems.forEach(item => {
+                    item.addEventListener('change', () => {
+                        updateProgress(item.checked);
+                    });
+                });
+                updateProgress(false);
+            }
+            
+            // New script for intro navigation
+            function setupIntroNav() {
+                const introNavLinks = document.querySelectorAll('.intro-nav-link');
+                const introSections = [
+                    document.getElementById('co2-section'),
+                    document.getElementById('checklist-section'),
+                    document.getElementById('form-section')
+                ];
+                
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const id = entry.target.id;
+                            introNavLinks.forEach(link => {
+                                link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+                            });
+                        }
+                    });
+                }, { rootMargin: "-50% 0px -50% 0px" });
+
+                introSections.forEach(section => {
+                    if (section) {
+                        observer.observe(section);
+                    }
+                });
+            }
+
+            showSectionFromHash();
+            setActiveTab('s1', 'outlook');
+            setActiveTab('s2', 'outlook');
+            setupChecklist();
+            setupIntroNav(); // Initialize the new navigation
+        });
+    </script>
+</body>
+</html>
